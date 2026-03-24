@@ -19,23 +19,40 @@ function AlternatingSection({
   imageLeft: boolean;
 }) {
   const imageBlock = (
-    <div className="relative aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
+    <div className="relative aspect-[4/3] overflow-hidden shadow-lg">
       <Image src={imageSrc} alt={imageAlt} fill className="object-cover" />
     </div>
   );
 
   const textBlock = (
     <div className="flex flex-col justify-center">
-      <h3 className="text-2xl sm:text-3xl font-bold text-text-heading mb-4">
+      <h3
+        className="mb-4"
+        style={{
+          fontFamily: "orpheus-pro, serif",
+          fontSize: "35.2px",
+          fontWeight: 400,
+          color: "#000",
+        }}
+      >
         {title}
       </h3>
-      <p className="text-text-body leading-relaxed">{description}</p>
+      <p
+        className="leading-relaxed"
+        style={{
+          fontFamily: "adobe-garamond-pro, serif",
+          fontSize: "19.2px",
+          color: "#000",
+        }}
+      >
+        {description}
+      </p>
     </div>
   );
 
   return (
-    <section className="py-16 bg-bg-white">
-      <div className="mx-auto max-w-6xl px-6">
+    <section className="py-16" style={{ backgroundColor: "#e0e0db" }}>
+      <div className="mx-auto max-w-[1200px] px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           {imageLeft ? (
             <>
@@ -58,7 +75,10 @@ export default function DesignBuild() {
   return (
     <>
       {/* Hero */}
-      <section className="relative h-[60vh] min-h-[400px] flex items-center justify-center">
+      <section
+        className="relative flex items-center justify-center"
+        style={{ height: "805px", backgroundColor: "#e0e0db" }}
+      >
         <Image
           src="/images/build-hero.jpg"
           alt="Design Build Solutions"
@@ -66,12 +86,31 @@ export default function DesignBuild() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: "rgba(224, 224, 219, 0.7)" }}
+        />
+        <div className="relative z-10 mx-auto max-w-[1200px] px-6 text-center">
+          <h1
+            className="mb-6"
+            style={{
+              fontFamily: "orpheus-pro, serif",
+              fontSize: "64px",
+              fontWeight: 400,
+              lineHeight: 1.23,
+              color: "#000",
+            }}
+          >
             Recipe For Success
           </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed opacity-90">
+          <p
+            className="max-w-2xl mx-auto leading-relaxed"
+            style={{
+              fontFamily: "adobe-garamond-pro, serif",
+              fontSize: "24px",
+              color: "#000",
+            }}
+          >
             When your technologist is well versed in hardware and software
             solutions, on premises or cloud deployment, it&rsquo;s a recipe for a
             successful state of the art AVIT system.
@@ -88,8 +127,6 @@ export default function DesignBuild() {
         imageLeft={true}
       />
 
-      <div className="border-t border-border-light" />
-
       <AlternatingSection
         title="Collaborate"
         description="The hybrid workplace is here to stay. We deliver the tools and infrastructure teams need to work together seamlessly — whether they are in the office, at home, or on the road."
@@ -98,8 +135,6 @@ export default function DesignBuild() {
         imageLeft={false}
       />
 
-      <div className="border-t border-border-light" />
-
       <AlternatingSection
         title="Public Address"
         description="PA systems provide clear, intelligible audio to large audiences. From corporate campuses to houses of worship, we design public address solutions that ensure every message is heard."
@@ -107,8 +142,6 @@ export default function DesignBuild() {
         imageAlt="Public address systems"
         imageLeft={true}
       />
-
-      <div className="border-t border-border-light" />
 
       <AlternatingSection
         title="Entertainment Systems"

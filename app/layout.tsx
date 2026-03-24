@@ -22,7 +22,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" href="https://use.typekit.net/pxp0lve.css" />
       </head>
-      <body className="min-h-screen flex flex-col bg-bg-white text-text-body">
+      <body className="min-h-screen flex flex-col">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
