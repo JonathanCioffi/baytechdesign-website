@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Bay Tech Design Group",
   description:
     "AVIT solutions — Audio-Visual and Information Technology design, integration, and service.",
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
@@ -19,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.className}>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col bg-bg-white text-text-body">
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />

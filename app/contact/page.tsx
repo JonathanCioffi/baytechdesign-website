@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import type { Metadata } from "next";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
@@ -13,48 +12,48 @@ export default function Contact() {
 
   return (
     <>
-      {/* Hero */}
-      <section className="relative overflow-hidden py-20 sm:py-28">
-        <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/10 via-transparent to-accent-gold/5" />
-        <div className="relative mx-auto max-w-4xl px-4 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-            Contact <span className="text-accent-blue">us.</span>
+      {/* Header */}
+      <section className="py-16 sm:py-20 bg-bg-white">
+        <div className="mx-auto max-w-4xl px-6 text-center">
+          <h1 className="text-4xl sm:text-5xl font-bold text-text-heading">
+            Contact us.
           </h1>
         </div>
       </section>
 
-      <section className="py-20 bg-bg-secondary">
-        <div className="mx-auto max-w-5xl px-4">
+      {/* Content */}
+      <section className="py-16 bg-bg-light">
+        <div className="mx-auto max-w-5xl px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             {/* Contact info */}
             <div className="space-y-8">
               <div>
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">
                   Email
                 </h2>
                 <a
                   href="mailto:info@baytechdesign.com"
-                  className="text-accent-blue hover:underline"
+                  className="text-text-heading hover:text-accent-gold transition-colors"
                 >
                   info@baytechdesign.com
                 </a>
               </div>
               <div>
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">
                   Phone
                 </h2>
                 <a
                   href="tel:+17322323910"
-                  className="text-text-primary hover:text-accent-blue transition-colors"
+                  className="text-text-heading hover:text-accent-gold transition-colors"
                 >
                   (732) 232-3910
                 </a>
               </div>
               <div>
-                <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+                <h2 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-2">
                   Address
                 </h2>
-                <address className="not-italic text-text-secondary leading-relaxed">
+                <address className="not-italic text-text-body leading-relaxed">
                   123 Freedom Hills Drive
                   <br />
                   Barnegat, NJ 08005
@@ -65,67 +64,67 @@ export default function Contact() {
             {/* Form */}
             <div>
               {submitted ? (
-                <div className="rounded-xl bg-bg-card border border-accent-blue/40 p-10 text-center">
-                  <p className="text-2xl font-semibold text-accent-blue mb-2">
+                <div className="rounded-lg bg-bg-white border border-border-light p-10 text-center shadow-sm">
+                  <p className="text-2xl font-semibold text-text-heading mb-2">
                     Thank you!
                   </p>
-                  <p className="text-text-secondary">
+                  <p className="text-text-muted">
                     We will be in touch shortly.
                   </p>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   <div>
                     <label
                       htmlFor="name"
-                      className="block text-sm font-medium text-text-secondary mb-1.5"
+                      className="block text-sm font-medium text-text-body mb-1.5"
                     >
-                      Name <span className="text-red-400">*</span>
+                      Name <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="name"
                       name="name"
                       type="text"
                       required
-                      className="w-full rounded-lg border border-border bg-bg-card px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent-blue/50 focus:border-accent-blue"
+                      className="w-full rounded border border-border-light bg-bg-white px-4 py-2.5 text-text-heading placeholder-text-light focus:outline-none focus:ring-2 focus:ring-accent-gold/50 focus:border-accent-gold"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="email"
-                      className="block text-sm font-medium text-text-secondary mb-1.5"
+                      className="block text-sm font-medium text-text-body mb-1.5"
                     >
-                      Email <span className="text-red-400">*</span>
+                      Email <span className="text-red-500">*</span>
                     </label>
                     <input
                       id="email"
                       name="email"
                       type="email"
                       required
-                      className="w-full rounded-lg border border-border bg-bg-card px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent-blue/50 focus:border-accent-blue"
+                      className="w-full rounded border border-border-light bg-bg-white px-4 py-2.5 text-text-heading placeholder-text-light focus:outline-none focus:ring-2 focus:ring-accent-gold/50 focus:border-accent-gold"
                       placeholder="you@example.com"
                     />
                   </div>
                   <div>
                     <label
                       htmlFor="message"
-                      className="block text-sm font-medium text-text-secondary mb-1.5"
+                      className="block text-sm font-medium text-text-body mb-1.5"
                     >
-                      Message <span className="text-red-400">*</span>
+                      Message <span className="text-red-500">*</span>
                     </label>
                     <textarea
                       id="message"
                       name="message"
                       required
                       rows={5}
-                      className="w-full rounded-lg border border-border bg-bg-card px-4 py-2.5 text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-accent-blue/50 focus:border-accent-blue resize-none"
+                      className="w-full rounded border border-border-light bg-bg-white px-4 py-2.5 text-text-heading placeholder-text-light focus:outline-none focus:ring-2 focus:ring-accent-gold/50 focus:border-accent-gold resize-none"
                       placeholder="How can we help?"
                     />
                   </div>
                   <button
                     type="submit"
-                    className="w-full rounded-lg bg-accent-blue px-6 py-3 font-semibold text-white hover:bg-accent-blue/90 transition-colors"
+                    className="w-full rounded bg-text-heading px-6 py-3 font-semibold text-white hover:bg-black transition-colors"
                   >
                     Send
                   </button>

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import Image from "next/image";
+import { useState, useEffect, useRef } from "react";
 
 interface DropdownItem {
   label: string;
@@ -13,17 +14,33 @@ function Dropdown({
   items,
   open,
   onToggle,
+  onClose,
 }: {
   label: string;
   items: DropdownItem[];
   open: boolean;
   onToggle: () => void;
+  onClose: () => void;
 }) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        onClose();
+      }
+    }
+    if (open) {
+      document.addEventListener("mousedown", handleClick);
+      return () => document.removeEventListener("mousedown", handleClick);
+    }
+  }, [open, onClose]);
+
   return (
-    <div className="relative">
+    <div className="relative" ref={ref}>
       <button
         onClick={onToggle}
-        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
+        className="flex items-center gap-1 px-3 py-2 text-sm font-medium text-text-body hover:text-accent-gold transition-colors"
       >
         {label}
         <svg
@@ -37,13 +54,13 @@ function Dropdown({
         </svg>
       </button>
       {open && (
-        <div className="absolute top-full left-0 mt-1 w-56 rounded-lg bg-bg-card border border-glass-border shadow-xl py-1 z-50">
+        <div className="absolute top-full left-0 mt-1 w-56 rounded bg-bg-white border border-border-light shadow-lg py-1 z-50">
           {items.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="block px-4 py-2.5 text-sm text-text-secondary hover:text-text-primary hover:bg-bg-card-hover transition-colors"
-              onClick={onToggle}
+              className="block px-4 py-2.5 text-sm text-text-body hover:text-accent-gold hover:bg-bg-light transition-colors"
+              onClick={onClose}
             >
               {item.label}
             </Link>
@@ -72,16 +89,22 @@ export function Nav() {
   const toggle = (name: string) =>
     setOpenDropdown((prev) => (prev === name ? null : name));
 
+  const closeDropdown = () => setOpenDropdown(null);
+
   return (
-    <nav className="sticky top-0 z-50 border-b border-glass-border bg-glass backdrop-blur-xl">
+    <nav className="sticky top-0 z-50 border-b border-border-light bg-bg-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold tracking-tight">
-              <span className="text-accent-blue">Bay Tech</span>{" "}
-              <span className="text-accent-gold">Design Group</span>
-            </span>
+            <Image
+              src="/images/logo.png"
+              alt="Bay Tech Design Group"
+              width={160}
+              height={40}
+              className="h-10 w-auto"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -91,16 +114,18 @@ export function Nav() {
               items={storyItems}
               open={openDropdown === "story"}
               onToggle={() => toggle("story")}
+              onClose={closeDropdown}
             />
             <Dropdown
-              label="Services"
+              label="Consulting Services"
               items={servicesItems}
               open={openDropdown === "services"}
               onToggle={() => toggle("services")}
+              onClose={closeDropdown}
             />
             <Link
               href="/contact"
-              className="ml-2 rounded-lg bg-accent-blue px-4 py-2 text-sm font-semibold text-white hover:bg-accent-blue/90 transition-colors"
+              className="ml-2 px-4 py-2 text-sm font-medium text-text-body hover:text-accent-gold transition-colors"
             >
               Contact Us
             </Link>
@@ -108,7 +133,7 @@ export function Nav() {
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 text-text-secondary hover:text-text-primary"
+            className="md:hidden p-2 text-text-body hover:text-accent-gold"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
@@ -125,29 +150,29 @@ export function Nav() {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-glass-border bg-bg-card">
+        <div className="md:hidden border-t border-border-light bg-bg-white">
           <div className="px-4 py-3 space-y-1">
-            <p className="px-3 pt-2 pb-1 text-xs font-semibold text-text-muted uppercase tracking-wider">
+            <p className="px-3 pt-2 pb-1 text-xs font-semibold text-text-light uppercase tracking-wider">
               The Story
             </p>
             {storyItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block px-3 py-2 text-sm text-text-secondary hover:text-text-primary"
+                className="block px-3 py-2 text-sm text-text-body hover:text-accent-gold"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
               </Link>
             ))}
-            <p className="px-3 pt-3 pb-1 text-xs font-semibold text-text-muted uppercase tracking-wider">
-              Services
+            <p className="px-3 pt-3 pb-1 text-xs font-semibold text-text-light uppercase tracking-wider">
+              Consulting Services
             </p>
             {servicesItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className="block px-3 py-2 text-sm text-text-secondary hover:text-text-primary"
+                className="block px-3 py-2 text-sm text-text-body hover:text-accent-gold"
                 onClick={() => setMobileOpen(false)}
               >
                 {item.label}
@@ -155,7 +180,7 @@ export function Nav() {
             ))}
             <Link
               href="/contact"
-              className="block mt-2 rounded-lg bg-accent-blue px-4 py-2.5 text-center text-sm font-semibold text-white"
+              className="block px-3 py-2 text-sm text-text-body hover:text-accent-gold"
               onClick={() => setMobileOpen(false)}
             >
               Contact Us

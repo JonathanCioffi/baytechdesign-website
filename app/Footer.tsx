@@ -7,7 +7,7 @@ function SocialIcon({ href, label, d }: { href: string; label: string; d: string
       target="_blank"
       rel="noopener noreferrer"
       aria-label={label}
-      className="text-text-muted hover:text-accent-gold transition-colors"
+      className="text-gray-400 hover:text-accent-gold transition-colors"
     >
       <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
         <path d={d} />
@@ -18,26 +18,23 @@ function SocialIcon({ href, label, d }: { href: string; label: string; d: string
 
 export function Footer() {
   return (
-    <footer className="border-t border-glass-border bg-bg-secondary">
+    <footer className="bg-bg-dark text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-          {/* Brand */}
+          {/* About */}
           <div>
-            <Link href="/" className="inline-block mb-4">
-              <span className="text-lg font-bold">
-                <span className="text-accent-blue">Bay Tech</span>{" "}
-                <span className="text-accent-gold">Design Group</span>
-              </span>
-            </Link>
-            <p className="text-text-secondary text-sm leading-relaxed">
-              AVIT solutions — Audio-Visual and Information Technology design,
-              integration, and service.
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
+              About
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              Bay Tech Design Group provides AVIT solutions — Audio-Visual and
+              Information Technology design, integration, and service.
             </p>
           </div>
 
-          {/* Quick links */}
+          {/* Quick Links */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
               Quick Links
             </h3>
             <ul className="space-y-2 text-sm">
@@ -52,7 +49,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-text-secondary hover:text-text-primary transition-colors"
+                    className="text-gray-300 hover:text-accent-gold transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -63,25 +60,25 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-sm font-semibold uppercase tracking-wider text-text-muted mb-4">
+            <h3 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-4">
               Contact
             </h3>
-            <address className="not-italic text-sm text-text-secondary space-y-2">
-              <p>123 Freedom Hills Drive</p>
-              <p>Barnegat, NJ 08005</p>
-              <p className="pt-1">
-                <a href="tel:+17322323910" className="hover:text-text-primary transition-colors">
-                  (732) 232-3910
-                </a>
-              </p>
+            <address className="not-italic text-sm text-gray-300 space-y-2">
               <p>
                 <a
                   href="mailto:info@baytechdesign.com"
-                  className="hover:text-text-primary transition-colors"
+                  className="hover:text-accent-gold transition-colors"
                 >
                   info@baytechdesign.com
                 </a>
               </p>
+              <p>
+                <a href="tel:+17322323910" className="hover:text-accent-gold transition-colors">
+                  (732) 232-3910
+                </a>
+              </p>
+              <p>123 Freedom Hills Drive</p>
+              <p>Barnegat, NJ 08005</p>
             </address>
 
             {/* Social */}
@@ -105,8 +102,8 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-glass-border text-center text-xs text-text-muted">
-          &copy; Bay Tech Design Group LLC 2021. All rights reserved.
+        <div className="mt-10 pt-6 border-t border-gray-700 text-center text-xs text-gray-500">
+          Bay Tech Design Group LLC 2021&copy;
         </div>
       </div>
     </footer>
