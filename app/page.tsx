@@ -12,13 +12,13 @@ export default function Home() {
           className="object-cover"
           priority
         />
-        <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center text-white">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+        <div className="absolute inset-0 bg-white/60" />
+        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif leading-tight mb-6 text-[#1a1a1a]">
             This is where the story begins&hellip;
           </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed opacity-90">
-            You have a project. You have a vision. We have the expertise to make
+          <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed text-[#333]">
+            You have a project.&nbsp; You have a vision.&nbsp; We have the expertise to make
             it reality.
           </p>
         </div>
