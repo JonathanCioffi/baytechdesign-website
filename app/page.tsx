@@ -3,8 +3,8 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="relative h-[80vh] min-h-[500px] flex items-center justify-center">
+      {/* Hero — starts behind the fixed transparent header */}
+      <section className="relative h-screen min-h-[700px] flex items-center justify-center">
         <Image
           src="/images/hero-home.png"
           alt="Bay Tech Design Group hero"
@@ -14,10 +14,10 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-white/60" />
         <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif leading-tight mb-6 text-[#1a1a1a]">
+          <h1 className="text-4xl sm:text-5xl lg:text-[64px] leading-[1.23] mb-6 text-black" style={{ fontFamily: "orpheus-pro, serif", fontWeight: 400 }}>
             This is where the story begins&hellip;
           </h1>
-          <p className="text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed text-[#333]">
+          <p className="text-lg sm:text-[24px] max-w-2xl mx-auto leading-relaxed text-black" style={{ fontFamily: "adobe-garamond-pro, serif" }}>
             You have a project.&nbsp; You have a vision.&nbsp; We have the expertise to make
             it reality.
           </p>
